@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+// ChoiceScreen.js styles
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2.6vh 0 2vh 0;
+`
+
 // Profile.js styles
 
 export const ProfileJS = styled.div`
@@ -46,5 +55,20 @@ export const Bio = styled.section`
         font-weight: 400;
         margin: 0;
         padding: 5px 10px;
+    }
+`
+
+// Button.js styles
+
+export const ButtonJS = styled.button`
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+    padding-top: 4px;
+    border: 1px solid black;
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+
+    img {
+        width: 65%;
     }
 `
