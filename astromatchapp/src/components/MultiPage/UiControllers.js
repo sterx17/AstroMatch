@@ -6,7 +6,7 @@ import { UiControllerJS } from './Style'
 export const UiControllers = (props) => {
   return (
     <UiControllerJS>
-      <button>
+      <button onClick={props.onClickLimpar}>
         <img className='cross' src={refreshButton} alt='Botão de Recomeçar os Matches' />
       </button>
       <button onClick={props.onClick}>

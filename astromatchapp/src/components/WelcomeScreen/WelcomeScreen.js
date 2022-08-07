@@ -9,7 +9,7 @@ export const WelcomeScreen = (props) => {
     <WelcomeScreenJS>
         <img src={logo}></img>
         <h1>Bem vindo ao AstroMatch...</h1>
-        <InputText />
+        <InputText value={props.value} onChange={props.onChange} />
         <StartButton onClick={props.onClick} />
     </WelcomeScreenJS>
   )

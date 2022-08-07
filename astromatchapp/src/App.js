@@ -7,12 +7,19 @@ import axios from 'axios'
 
 
 function App() {
+  // pega nome de usuario
+  const pegaNomeUsuario = () => {
+    localStorage.setItem('aluno', inputName)
+  }
+
   // useStates relacionados aos Botões de Navegação
   const [nav, setNav] = useState('Welcome')
+  const [inputName, setInputName] = useState('')
 
   // funções relacionadas a navegação
   const capturaClickComecar = () => {
     setNav('Choice')
+    pegaNomeUsuario()
   }
   const capturaClickUsuario = () => {
     setNav('Matches')
@@ -25,8 +32,7 @@ function App() {
   const [perfil, setPerfil] = useState([])
   const [perfisEscolhidos, setPerfisEscolhidos] = useState([])
 
-  const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno'
-  const headers = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' }}
+  const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/stephany'
 
   const pegaPerfil = () => {
     axios.get(url + '/person')
@@ -38,12 +44,11 @@ function App() {
   // controles do Match
 
   const choosePerson = (choice) => {
-    axios.post(url + '/choose-person', headers, choice).then((response) => { setPerfisEscolhidos(response.data)}).catch((error) => {console.log(error.response + 'deu ruim no salvar o perfil.')})
+    axios.post(url + '/choose-person', choice).then((response) => { setPerfisEscolhidos(...perfisEscolhidos, response.data)}).catch((error) => {console.log(error.response + 'deu ruim no salvar o perfil.')})
   }
-
   const escolhaPositiva = (id) => {
     const body = {
-      "id": {id},
+      "id": `${id}`,
 	    "choice": true
     }
     choosePerson(body)
@@ -51,26 +56,26 @@ function App() {
   }
   const escolhaNegativa = (id) => {
     const body = {
-      "id": {id},
+      "id": `${id}`,
 	    "choice": false
     }
     choosePerson(body)
     pegaPerfil()
   }
 
-  console.log(perfisEscolhidos)
+  // Clear
 
-  // Renderização dos Matches dados
-
-  
+  const limpaMatches = () => {
+    axios.put(url + '/clear', { headers: { 'content-type':'application/json'}})
+  }
   
   switch (nav) {
     case 'Choice':
-      return <AppContainer><ChoiceScreen botaoEscolhaPositiva={() => { escolhaPositiva(perfil.profile.id)}} imagem={perfil.profile.photo} nome={perfil.profile.name} idade={perfil.profile.age} bio={perfil.profile.bio} onClick={capturaClickUsuario} /></AppContainer>;
+      return <AppContainer><ChoiceScreen onCLickLimpar={() => { limpaMatches()  }} botaoEscolhaNegativa={() => { escolhaNegativa(perfil.profile.id) }} botaoEscolhaPositiva={() => { escolhaPositiva(perfil.profile.id)}} imagem={perfil.profile.photo} nome={perfil.profile.name} idade={perfil.profile.age} bio={perfil.profile.bio} onClick={capturaClickUsuario} /></AppContainer>;
     case 'Matches':
-      return <AppContainer><MatchesList onClick={capturaClickVoltar} /></AppContainer>;
+      return <AppContainer><MatchesList user={inputName} onClick={capturaClickVoltar} /></AppContainer>;
     default:
-      return <AppContainer><WelcomeScreen onClick={capturaClickComecar}/></AppContainer>;
+      return <AppContainer><WelcomeScreen value={inputName} onChange={(e) => {e.preventDefault(); setInputName(e.target.value)}} onClick={capturaClickComecar}/></AppContainer>;
   }
 }
 

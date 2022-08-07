@@ -9,23 +9,25 @@ export const MatchesList = (props) => {
 
   const [matches, setMatches] = useState([])
 
-  const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/matches'
+  const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/stephany/matches'
 
   const pegaTodosMatches = () => {
-    axios.get(url).then((response) => { setMatches(response.data)}).catch((error) => { console.log(error.response + 'deu ruim no pegar os Matches.')})
+    axios.get(url).then((response) => { setMatches(response.data.matches)}).catch((error) => { console.log(error.response + 'deu ruim no pegar os Matches.')})
   }
+
+
 
   useEffect(() => {
     pegaTodosMatches()
   }, [])
   
   const lista = matches.map((item, index) => {
-    return <MatchesItem imagem={item.profile.photo} nome={item.profile.name}/>
+    return <MatchesItem key={index} imagem={item.photo} nome={item.name}/>
   })
 
   return (
     <MatchesListJS>
-        <ProfileU />
+        <ProfileU user={props.user}/>
         <MatchesTitle>Seus Matches</MatchesTitle>
         { lista }
         <UiControllers onClick={props.onClick} />
