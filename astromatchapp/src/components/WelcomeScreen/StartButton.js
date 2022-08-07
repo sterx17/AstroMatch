@@ -1,10 +1,10 @@
 import React from 'react'
 import { StartButtonJS } from './Style'
 
-export const StartButton = () => {
+export const StartButton = (props) => {
   return (
     <StartButtonJS>
-        <button>COMEÇAR</button>
+        <button onClick={props.onClick}>COMEÇAR</button>
     </StartButtonJS>
   )
 }

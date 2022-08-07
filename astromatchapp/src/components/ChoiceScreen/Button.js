@@ -3,7 +3,7 @@ import { ButtonJS } from './Style'
 
 export const Button = (props) => {
   return (
-    <ButtonJS>
+    <ButtonJS onClick={props.botaoEscolha}>
       <img src={props.imagem} alt='Botão de Recusar Perfil'/>
     </ButtonJS>
   )

@@ -9,6 +9,7 @@ export const UiControllerJS = styled.div`
     flex-direction: row;
 
 
+
     button {
         width: 50%;
         border: 1px solid black;
@@ -17,5 +18,17 @@ export const UiControllerJS = styled.div`
     img {
         padding-top: 3px;
         height: 60%;
+    }
+
+    @media screen and (max-width: 479px) {
+        top: 750px;
+        position: fixed;
+    }
+
+    @media screen and (min-width: 480px) {
+        bottom: 0px;
+        position: fixed;
+
+        width: 25%;
     }
 `

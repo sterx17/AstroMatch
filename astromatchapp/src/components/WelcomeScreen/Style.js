@@ -7,14 +7,13 @@ export const WelcomeScreenJS = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 25vh;
 
     img {
         width: 30%;
         border: 2px solid white;
         border-radius: 10px;
         filter: drop-shadow(0px 4px 4px rgba(0,0,0, 0.25));
-        position: absolute;
-        top: 200px
     }
 
     h1 {
@@ -22,8 +21,21 @@ export const WelcomeScreenJS = styled.div`
         width: 50%;
         text-shadow: 0px 4px 4px rgba(0,0,0, 0.25);
         font-size: 24px;
-        position: relative;
-        top: 330px
+        margin-top: 21px;
+    }
+
+    @media screen and (min-width: 480px) {
+        width: 50vw;
+        padding-top: 0vh;
+
+        img {
+            width: 20%;
+        }
+
+        h1 {
+            width: 50%;
+            text-align: center;
+        }
     }
 `;
 
@@ -55,8 +67,16 @@ export const InputForm = styled.form`
         border: 1px solid gray;
         box-sizing: border-box;
         padding-left: 15px;
-        position: relative;
-        top: 350px
+        margin-top: 30px;
+    }
+
+    @media screen and (min-width: 480px) {
+        width: 50vw;
+
+        input {
+            width: 40%;
+            margin-top: 10px;
+        }
     }
 `;
 
@@ -65,6 +85,7 @@ export const InputForm = styled.form`
 export const StartButtonJS = styled.div`
     width: 40%;
     height: 40px;
+
     button {
         width: 100%;
         height: 100%;
@@ -74,7 +95,25 @@ export const StartButtonJS = styled.div`
         font-size: 16px;
         color: white;
         font-weight: bold;
-        position: relative;
-        top: 380px;
+        margin-top: 30px;
+    }
+
+    button:hover {
+        border: 1px solid #e26fff;
+    }
+
+    button:active {
+        border: 1px solid #e26fff;
+        background-color: white;
+        color: #e26fff;
+    }
+
+    @media screen and (min-width: 480px) {
+        display: flex;
+        justify-content: center;
+
+        button {
+            width: 70%;
+        }
     }
 `;

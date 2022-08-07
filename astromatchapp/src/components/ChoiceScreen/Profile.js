@@ -1,14 +1,18 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import { ProfileJS, Bio } from './Style'
 import lista from '../../assets/Mocks/Dados.json'
 
-export const Profile = () => {
+
+export const Profile = (props) => {
+
+
+
   return (
     <ProfileJS>
-      <img src={lista.profile.photo} />
+      <img src={props.imagem} />
       <Bio>
-        <h3>{lista.profile.name}, {lista.profile.age}</h3>
-        <p>{lista.profile.bio}</p>
+        <h3>{props.nome}, {props.idade}</h3>
+        <p>{props.bio}</p>
       </Bio>
     </ProfileJS>
   )
