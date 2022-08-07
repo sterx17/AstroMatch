@@ -30,6 +30,11 @@ export const ProfileJS = styled.div`
         border: 3px solid white;
         margin-bottom: 15px;
     }
+
+    @media screen and (min-width: 480px) {
+        width: 25vw;
+        height: 75%;
+    }
 `;
 
 export const Bio = styled.section`
@@ -56,6 +61,10 @@ export const Bio = styled.section`
         margin: 0;
         padding: 5px 10px;
     }
+
+    @media screen and (min-width: 480px) {
+        width: 25vw;
+    }
 `
 
 // Button.js styles
@@ -70,5 +79,10 @@ export const ButtonJS = styled.button`
 
     img {
         width: 65%;
+    }
+
+    @media screen and (min-width: 480px) {
+        width: 60px;
+        height: 60px;
     }
 `

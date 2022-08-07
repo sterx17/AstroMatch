@@ -4,13 +4,13 @@ import { InputText } from './InputText'
 import { StartButton } from './StartButton'
 import { WelcomeScreenJS } from './Style'
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = (props) => {
   return (
     <WelcomeScreenJS>
         <img src={logo}></img>
         <h1>Bem vindo ao AstroMatch...</h1>
         <InputText />
-        <StartButton />
+        <StartButton onClick={props.onClick} />
     </WelcomeScreenJS>
   )
 }

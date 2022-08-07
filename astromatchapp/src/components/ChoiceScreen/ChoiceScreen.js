@@ -7,16 +7,16 @@ import { UiControllers } from '../MultiPage/UiControllers'
 import { Profile } from './Profile'
 import { Button } from './Button'
 
-export const ChoiceScreen = () => {
+export const ChoiceScreen = (props) => {
   return (
     <div>
-        <Profile />
+        <Profile imagem={props.imagem} nome={props.nome} idade={props.idade} bio={props.bio} />
         <ButtonContainer>
           <Button imagem={cross} />
           <Button imagem={logo}/>
-          <Button imagem={heart}/>  
+          <Button botaoEscolhaPositiva={props.botaoEscolhaPositiva} imagem={heart}/>  
         </ButtonContainer>
-        <UiControllers />
+        <UiControllers onClick={props.onClick} />
     </div>
   )
 }
