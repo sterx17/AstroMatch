@@ -16,7 +16,7 @@ export const ChoiceScreen = (props) => {
           <Button imagem={logo}/>
           <Button botaoEscolha={props.botaoEscolhaPositiva} imagem={heart}/>  
         </ButtonContainer>
-        <UiControllers onClickLimpar={props.onClickLimpar} onClick={props.onClick} />
+        <UiControllers clear={props.clear} onClick={props.onClick} />
     </div>
   )
 }
