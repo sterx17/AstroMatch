@@ -66,12 +66,12 @@ function App() {
   // Clear
 
   const limpaMatches = () => {
-    axios.put(url + '/clear', { headers: { 'content-type':'application/json'}})
+    axios.put(url + '/clear').then((response) => {pegaPerfil([])}).catch((error) => {console.log(error.response)})
   }
   
   switch (nav) {
     case 'Choice':
-      return <AppContainer><ChoiceScreen onCLickLimpar={() => { limpaMatches()  }} botaoEscolhaNegativa={() => { escolhaNegativa(perfil.profile.id) }} botaoEscolhaPositiva={() => { escolhaPositiva(perfil.profile.id)}} imagem={perfil.profile.photo} nome={perfil.profile.name} idade={perfil.profile.age} bio={perfil.profile.bio} onClick={capturaClickUsuario} /></AppContainer>;
+      return <AppContainer><ChoiceScreen clear={() => { limpaMatches()  }} botaoEscolhaNegativa={() => { escolhaNegativa(perfil.profile.id) }} botaoEscolhaPositiva={() => { escolhaPositiva(perfil.profile.id)}} imagem={perfil.profile.photo} nome={perfil.profile.name} idade={perfil.profile.age} bio={perfil.profile.bio} onClick={capturaClickUsuario} /></AppContainer>;
     case 'Matches':
       return <AppContainer><MatchesList user={inputName} onClick={capturaClickVoltar} /></AppContainer>;
     default:
