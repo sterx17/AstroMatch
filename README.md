@@ -8,7 +8,7 @@ A escola Labenu me desafiou a criar um Tinder Wannabe em ReactJS, com as seguint
 
 ## Demonstração
 
-http://quick-skate.surge.sh/
+http://marked-sticks.surge.sh/
 
 
 ## Dependências
